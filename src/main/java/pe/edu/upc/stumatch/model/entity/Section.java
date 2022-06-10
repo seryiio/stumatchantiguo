@@ -1,20 +1,17 @@
 package pe.edu.upc.stumatch.model.entity;
 
-import java.util.Date;
+
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 @Entity
 @Table(name = "sections")
@@ -34,6 +31,9 @@ public class Section {
 	@Column(name = "end_time", nullable = false)
 	private String endTime;
 	
+	@Column(name = "days", nullable = false)
+	private String day;
+
 	@ManyToOne
 	@JoinColumn(name = "course_id")
 	private Course course;
@@ -42,10 +42,17 @@ public class Section {
 	@JoinColumn(name = "teacher_id")
 	private Teacher teacher;
 	
-	@ManyToOne
-	@JoinColumn(name = "enrollment_id")
-	private Enrollment enrollment;
+	@OneToMany(mappedBy = "section")
+	private List<Enrollment> enrollment;
 
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+	
 	public String getId() {
 		return id;
 	}
@@ -78,11 +85,11 @@ public class Section {
 		this.teacher = teacher;
 	}
 
-	public Enrollment getEnrollment() {
+	public List<Enrollment> getEnrollment() {
 		return enrollment;
 	}
 
-	public void setEnrollment(Enrollment enrollment) {
+	public void setEnrollment(List<Enrollment> enrollment) {
 		this.enrollment = enrollment;
 	}
 

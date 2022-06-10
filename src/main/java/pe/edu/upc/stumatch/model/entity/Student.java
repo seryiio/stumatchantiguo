@@ -48,9 +48,8 @@ public class Student {
 	@Column(name = "email_personal", length = 70)	
 	private String emailPersonal;
 	
-	@ManyToOne
-	@JoinColumn(name = "enrollment_id")
-	private Enrollment enrollment;
+	@OneToMany(mappedBy = "student")
+	private List<Enrollment> enrollments;
 	
 	@OneToMany(mappedBy = "student")
 	private List<Payment> payments;
@@ -61,6 +60,7 @@ public class Student {
 	
 	public Student() {
 		payments = new ArrayList<>();
+		enrollments = new ArrayList<>();
 	}
 
 	public String getId() {
@@ -134,15 +134,7 @@ public class Student {
 	public void setEmailPersonal(String emailPersonal) {
 		this.emailPersonal = emailPersonal;
 	}
-
-	public Enrollment getEnrollment() {
-		return enrollment;
-	}
-
-	public void setEnrollment(Enrollment enrollment) {
-		this.enrollment = enrollment;
-	}
-
+	
 	public List<Payment> getPayments() {
 		return payments;
 	}
@@ -157,6 +149,14 @@ public class Student {
 
 	public void setCareer(Career career) {
 		this.career = career;
+	}
+
+	public List<Enrollment> getEnrollments() {
+		return enrollments;
+	}
+
+	public void setEnrollments(List<Enrollment> enrollments) {
+		this.enrollments = enrollments;
 	}
 
 	

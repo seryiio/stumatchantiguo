@@ -26,6 +26,7 @@
 				    <tr class="table-danger">
 				      <th scope="col">Codigo</th>
 				      <th scope="col">Curso</th>
+				      <th scope="col">Dia</th>
 				      <th scope="col">Hora de Inicio</th>
 				       <th scope="col">Hora de Termino</th>
 				      <th scope="col">Vacantes</th>
@@ -37,13 +38,14 @@
 				    <tr th:each="section : ${sections}">
 				      <th scope="row" th:text="${section.id}"></th>
 				      <td th:text="${section.course.name}"></td>
+				      <td th:text="${section.day}"></td>
 				      <td th:text="${section.startTime}"></td>
 				      <td th:text="${section.endTime}"></td>
 				      <td th:text="${section.vacancies}"></td>
 				      <td th:text="${section.teacher.lastName}"></td>
 				      
 				      <td>
-				      <a class="btn btn-warning" th:href="@{'/sections/' + ${section.id} + '/edit'}" role="button"><i class="fas fa-cog"></i></a>
+				      <a class="btn btn-warning" th:href="@{'/sections/' + ${section.id} + '/edit'}" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
 				      <a class="btn btn-danger" th:href="@{'/sections/' + ${section.id} + '/delete'}" role="button"><i class="fas fa-trash"></i></a>
 				      </td>
 				    </tr>
@@ -51,8 +53,8 @@
 				</table>
 						    
 		  </div>
-		  <div class="card-footer text-muted">
-		   <a class="btn btn-danger" th:href="@{/sections/new}" role="button"><i class="fas fa-plus-circle"></i></a>
+		   <div class="card-footer text-muted">
+		   <a class="btn btn-danger" th:href="@{/sections/new}" role="button"><i class="fa-solid fa-plus"></i> Agregar nueva Seccion</a>
 		  </div>
 		</div>
 	</section>

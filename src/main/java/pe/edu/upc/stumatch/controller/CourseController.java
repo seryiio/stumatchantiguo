@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pe.edu.upc.stumatch.business.crud.CareerService;
 import pe.edu.upc.stumatch.business.crud.CourseService;
 import pe.edu.upc.stumatch.business.crud.SectionService;
 import pe.edu.upc.stumatch.business.crud.TeacherService;
+import pe.edu.upc.stumatch.model.entity.Career;
 import pe.edu.upc.stumatch.model.entity.Course;
 import pe.edu.upc.stumatch.model.entity.Section;
 import pe.edu.upc.stumatch.model.entity.Teacher;
@@ -25,8 +27,9 @@ public class CourseController {
 	@Autowired
 	private CourseService courseService;
 	
+	
 	@Autowired
-	private SectionService sectionService;
+	private CareerService careerService;
 
 	@GetMapping	
 	public String listCourses(Model model) {
@@ -39,13 +42,6 @@ public class CourseController {
 			e.printStackTrace();
 		}
 		
-		try {
-			List<Section> sections = sectionService.getAll();
-			model.addAttribute("sections", sections);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		return "courses/list-courses";
 	}
@@ -57,6 +53,8 @@ public class CourseController {
 		try {
 			List<Course> courses = courseService.getAll();
 			model.addAttribute("courses", courses);
+			List<Career> careers = careerService.getAll();
+			model.addAttribute("careers", careers);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -84,6 +82,8 @@ public class CourseController {
 					model.addAttribute("course", optional.get());
 					List<Course> courses = courseService.getAll();
 					model.addAttribute("courses", courses);
+					List<Career> careers = careerService.getAll();
+					model.addAttribute("careers", careers);
 				} else {
 					return "redirect:/courses";
 				}
