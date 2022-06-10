@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,6 +29,10 @@ public class Course {
 	
 	@OneToMany(mappedBy = "course")
 	private List<Section> sections;
+	
+	@ManyToOne
+	@JoinColumn(name = "career_id")
+	private Career career;
 	
 	public Course() {
 		sections = new ArrayList<>();
@@ -71,6 +77,13 @@ public class Course {
 	public void setNumberCredits(Integer numberCredits) {
 		this.numberCredits = numberCredits;
 	}
-	
+
+	public Career getCareer() {
+		return career;
+	}
+
+	public void setCareer(Career career) {
+		this.career = career;
+	}
 	
 }

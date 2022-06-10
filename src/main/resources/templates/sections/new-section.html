@@ -69,18 +69,17 @@
 				    </div>
 				  </div>
 				  
-					<div class="col-md-4">
-							<label for="teacher" class="form-label">Profesor</label> <select
-								class="form-select" th:field="*{teacher}" required>
-								<option selected disabled value="">Choose...</option>
-								<option th:each="teacher : ${teachers}"
-									th:value="${teacher.id}"
-									th:text="${teacher.lastName}">...</option>
-							</select>
-							<div class="invalid-feedback">Please select a valid state.
-							</div>
-						</div>
-						
+					<div class="col-md-3">
+				    <label for="teacher" class="form-label">Profesor</label>
+				    <select class="form-select" th:field="*{teacher}" required>
+				      <option value="">Elige un Profesor</option>
+				      <option th:each="teacher : ${teachers}" th:value="${teacher.id}" th:text="${teacher.lastName}"></option>
+				    </select>
+				    <div class="invalid-feedback">
+				      Please select a valid state.
+				    </div>
+				  </div>
+				  
 				  <div class="col-12" style="text-align: center;">
 				    <button class="btn btn-success" type="submit"><i class="fas fa-plus"></i> Create</button>
 				  </div>

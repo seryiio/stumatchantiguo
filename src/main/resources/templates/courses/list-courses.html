@@ -29,6 +29,7 @@
 				      <th scope="col">Nombre</th>
 				      <th scope="col">Numero de Creditos</th>
 				      <th scope="col">Ciclo</th>
+				      <th scope="col">Carrera</th>
 				      <th scope="col"></th>
 				    </tr>
 				  </thead>
@@ -38,6 +39,7 @@
 				      <td th:text="${course.name}"></td>
 				      <td th:text="${course.numberCredits}"></td>
 				      <td th:text="${course.numberCycle}"></td>
+				      <td th:text="${course.career.name}"></td>
 				      <td>
 				      <a class="btn btn-warning" th:href="@{'/courses/' + ${course.id} + '/edit'}" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
 				      <a class="btn btn-danger" th:href="@{'/courses/' + ${course.id} + '/delete'}" role="button"><i class="fas fa-trash"></i></a>

@@ -25,9 +25,13 @@ public class Career {
 	@OneToMany(mappedBy = "career")
 	private List<Teacher> teachers;
 	
+	@OneToMany(mappedBy = "career")
+	private List<Course> courses;
+	
 	public Career() {
 		students = new ArrayList<>();
 		teachers = new ArrayList<>();
+		courses = new ArrayList<>();
 	}
 
 	public String getId() {
@@ -60,6 +64,14 @@ public class Career {
 
 	public void setTeachers(List<Teacher> teachers) {
 		this.teachers = teachers;
+	}
+
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
 	}
 	
 	

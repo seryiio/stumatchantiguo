@@ -9,17 +9,17 @@
 	<main>
 
 		<section class="section">
-			<nav style="-bs-breadcrumb-divider: '&gt;';" aria-label="breadcrumb">
+			<nav class="mt-3 mx-3" aria-label="breadcrumb">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
 					<li class="breadcrumb-item active" aria-current="page"><a
-						th:href="@{/sections}">Food</a></li>
-					<li class="breadcrumb-item active" aria-current="page">Edit</li>
+						th:href="@{/sections}">Seccion</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Editar</li>
 				</ol>
 			</nav>
 
 			<div class="card text-center">
-				<div class="card-header">Edit Delivery</div>
+				<div class="card-header"></div>
 				<div class="card-body" style="text-align: left;">
 					<form th:action="@{'/sections/' + ${section.id} + '/update'}"
 						th:object="${section}" method="post" class="row g-3 needs-validation"

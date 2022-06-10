@@ -24,20 +24,19 @@ import pe.edu.upc.stumatch.model.entity.Teacher;
 @RequestMapping("/sections")
 @SessionAttributes("{section}")
 public class SectionController {
-	
+
 	@Autowired
 	private SectionService sectionService;
-	
+
 	@Autowired
 	private CourseService courseService;
-	
 
 	@Autowired
 	private TeacherService teacherService;
-	
+
 	@GetMapping
 	public String listSection(Model model) {
-		
+
 		try {
 			List<Section> sections = sectionService.getAll();
 			model.addAttribute("sections", sections);
@@ -47,7 +46,7 @@ public class SectionController {
 		}
 		return "sections/list-sections";
 	}
-	
+
 	@GetMapping("new")
 	public String newSection(Model model) {
 		Section section = new Section();
@@ -63,7 +62,7 @@ public class SectionController {
 		}
 		return "sections/new-section";
 	}
-	
+
 	@PostMapping("savenew")
 	public String saveSection(Model model, @ModelAttribute("section") Section section) {
 		try {
@@ -74,33 +73,34 @@ public class SectionController {
 		}
 		return "redirect:/sections";
 	}
-	
+
 	@GetMapping("{id}/edit")
 	public String editSection(Model model, @PathVariable("id") String id) {
-		
+
 		try {
-			if(sectionService.existById(id)) {
+			if (sectionService.existById(id)) {
 				Optional<Section> optional = sectionService.findById(id);
 				model.addAttribute("section", optional.get());
 				List<Course> courses = courseService.getAll();
 				model.addAttribute("courses", courses);
-				List<Teacher> teachers= teacherService.getAll();
+				List<Teacher> teachers = teacherService.getAll();
 				model.addAttribute("teachers", teachers);
 			} else {
 				return "redirect:/sections";
 			}
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "sections/edit-section";
 	}
-	
+
 	@PostMapping("{id}/update")
-	public String updateSection(Model model, @ModelAttribute("section") Section section, @PathVariable("id") String id) {
+	public String updateSection(Model model, @ModelAttribute("section") Section section,
+			@PathVariable("id") String id) {
 		try {
-			if(sectionService.existById(id)) {
+			if (sectionService.existById(id)) {
 				sectionService.update(section);
 			} else {
 				return "redirect:/sections";
@@ -111,11 +111,11 @@ public class SectionController {
 		}
 		return "redirect:/sections";
 	}
-	
+
 	@GetMapping("{id}/delete")
 	public String deleteSection(Model model, @PathVariable("id") String id) {
 		try {
-			if(sectionService.existById(id)) {
+			if (sectionService.existById(id)) {
 				sectionService.deleteById(id);
 			} else {
 				return "redirect:/sections";
@@ -126,5 +126,5 @@ public class SectionController {
 		}
 		return "redirect:/sections";
 	}
-	
+
 }
