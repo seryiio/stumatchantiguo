@@ -6,13 +6,14 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "teachers")
+@Table(name = "teachers", indexes = {@Index(columnList = "last_name, first_name", name = "teachers_index_last_name_first_name")})
 public class Teacher {
 	@Id
 	@Column(name = "teacher_id", length = 12, nullable = false)

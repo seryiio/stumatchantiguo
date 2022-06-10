@@ -48,7 +48,7 @@
 				      <td th:text="${teacher.career.name}"></td>
 				      
 				      <td>
-				      <a class="btn btn-warning" th:href="@{'/teachers/' + ${teacher.id} + '/edit'}" role="button"><i class="fas fa-cog"></i></a>
+				      <a class="btn btn-warning" th:href="@{'/teachers/' + ${teacher.id} + '/edit'}" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
 				      <a class="btn btn-danger" th:href="@{'/teachers/' + ${teacher.id} + '/delete'}" role="button"><i class="fas fa-trash"></i></a>
 				      </td>
 				    </tr>
@@ -57,7 +57,7 @@
 						    
 		  </div>
 		  <div class="card-footer text-muted">
-		   <a class="btn btn-danger" th:href="@{/teachers/new}" role="button"><i class="fas fa-plus-circle"></i></a>
+		   <a class="btn btn-danger" th:href="@{/courses/new}" role="button"><i class="fa-solid fa-plus"></i> Agregar nuevo curso</a>
 		  </div>
 		</div>
 	</section>

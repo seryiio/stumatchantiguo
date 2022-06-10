@@ -49,8 +49,9 @@
 							<tr th:each="course : ${courses}">
 								<td th:text="${course.numberCycle}"></td>
 								<td th:text="${course.numberCredits}"></td>
-								<td class="btn" data-bs-toggle="modal"
-									data-bs-target="#exampleModal" th:text="${course.name}"></td>
+								<td><a class="btn"
+									th:href="@{'/enrollments/' + ${course.id} + '/select_section'}" role="button"><i
+										th:text="${course.name}"></i></a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -79,7 +80,8 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="section : ${sections}">
+									<tr th:each="section:${sections}"
+										th:if="section.course.name == 'IdLetra'">
 										<td><input class="form-check-input" type="radio"
 											name="flexRadioDefault" id="flexRadioDefault1">
 										<td th:text=${section.teacher.firstName}></td>
@@ -120,11 +122,11 @@
 
 						<tbody>
 							<tr th:each="student : ${students}">
-								<th scope="row" th:text="${student.id}">1</th>
-								<td th:text="${student.lastName}">Mark</td>
-								<td th:text="${student.firstName}">Otto</td>
-								<td th:text="${student.age}">@mdo</td>
-								<td th:text="${student.career.name}">@mdo</td>
+								<th scope="row" th:text="${student.id}"></th>
+								<td th:text="${student.lastName}"></td>
+								<td th:text="${student.firstName}"></td>
+								<td th:text="${student.age}"></td>
+								<td th:text="${student.career.name}"></td>
 							</tr>
 						</tbody>
 					</table>

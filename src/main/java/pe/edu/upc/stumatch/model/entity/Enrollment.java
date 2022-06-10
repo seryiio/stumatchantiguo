@@ -1,8 +1,6 @@
 package pe.edu.upc.stumatch.model.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -42,15 +41,24 @@ public class Enrollment {
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
 	
-	@OneToMany(mappedBy = "enrollment")
-	private List<Student> students;
+	@ManyToOne
+	@JoinColumn(name = "student_id")
+	private Student student;
 	
-	@OneToMany(mappedBy = "enrollment")
-	private List<Section> sections;
+	@ManyToOne
+	@JoinColumn(name = "section_id")
+	private Section section;
 	
-	public Enrollment() {
-		students = new ArrayList<>();
-		sections = new ArrayList<>();
+	public Section getSection() {
+		return section;
+	}
+
+	public void setSection(Section section) {
+		this.section = section;
+	}
+
+	public void setNumberCycle(Integer numberCycle) {
+		this.numberCycle = numberCycle;
 	}
 
 	public Integer getId() {
@@ -93,20 +101,12 @@ public class Enrollment {
 		this.endDate = endDate;
 	}
 
-	public List<Student> getStudents() {
-		return students;
+	public Student getStudent() {
+		return student;
 	}
 
-	public void setStudents(List<Student> students) {
-		this.students = students;
-	}
-
-	public List<Section> getSections() {
-		return sections;
-	}
-
-	public void setSections(List<Section> sections) {
-		this.sections = sections;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 }

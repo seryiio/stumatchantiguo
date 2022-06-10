@@ -113,7 +113,7 @@ public class SectionController {
 	}
 	
 	@GetMapping("{id}/delete")
-	public String deleteDelivery(Model model, @PathVariable("id") String id) {
+	public String deleteSection(Model model, @PathVariable("id") String id) {
 		try {
 			if(sectionService.existById(id)) {
 				sectionService.deleteById(id);
