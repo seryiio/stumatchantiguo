@@ -47,6 +47,9 @@ public class Student {
 	
 	@Column(name = "email_personal", length = 70)	
 	private String emailPersonal;
+
+	@Column(name = "credit_amount", columnDefinition = ("NUMERIC(2)"))	
+	private Integer creditAmount;
 	
 	@OneToMany(mappedBy = "student")
 	private List<Enrollment> enrollments;
@@ -69,6 +72,14 @@ public class Student {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public Integer getCreditAmount() {
+		return creditAmount;
+	}
+
+	public void setCreditAmount(Integer creditAmount) {
+		this.creditAmount = creditAmount;
 	}
 
 	public String getLastName() {
