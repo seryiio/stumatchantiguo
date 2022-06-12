@@ -10,6 +10,7 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -60,6 +61,12 @@ public class Student {
 	@ManyToOne
 	@JoinColumn(name = "career_id")
 	private  Career career;
+	
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	private Users user;
+	
+	
 	
 	public Student() {
 		payments = new ArrayList<>();
@@ -168,6 +175,14 @@ public class Student {
 
 	public void setEnrollments(List<Enrollment> enrollments) {
 		this.enrollments = enrollments;
+	}
+
+	public Users getUser() {
+		return user;
+	}
+
+	public void setUser(Users user) {
+		this.user = user;
 	}
 
 	
