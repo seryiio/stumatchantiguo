@@ -20,7 +20,7 @@ public class LoginController {
 			RedirectAttributes flash) {
 
 		if (principal != null) {
-			return "redirect:/emprendedores/list";
+			return "redirect:/enrollments";
 		}
 
 		if (sidebar != null) {

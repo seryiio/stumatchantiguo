@@ -41,7 +41,7 @@ public class Student {
 	private Integer cycle;
 	
 	@Column(name = "phone_number",columnDefinition = ("NUMERIC(9)"), nullable = false)
-	private Integer phoneNomber;
+	private Integer phoneNumber;
 	
 	@Column(name = "email_university", length = 70)	
 	private String emailUniversity;
@@ -65,7 +65,6 @@ public class Student {
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private Users user;
-	
 	
 	
 	public Student() {
@@ -129,12 +128,12 @@ public class Student {
 		this.cycle = cycle;
 	}
 
-	public Integer getPhoneNomber() {
-		return phoneNomber;
+	public Integer getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setPhoneNomber(Integer phoneNomber) {
-		this.phoneNomber = phoneNomber;
+	public void setPhoneNumber(Integer phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getEmailUniversity() {

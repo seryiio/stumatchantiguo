@@ -3,9 +3,10 @@ package pe.edu.upc.stumatch.business.crud.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-
+import pe.edu.upc.stumatch.model.entity.Student;
 import pe.edu.upc.stumatch.model.entity.Users;
 import pe.edu.upc.stumatch.model.repository.UserRepository;
 import pe.edu.upc.stumatch.business.crud.IUserService;
@@ -16,6 +17,11 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private UserRepository uR;
 
+	@Override
+	public JpaRepository<Users, Long> getJpaRepository() {
+		return this.uR;
+	}
+	
 	@Override
 	public Integer insert(Users user) {
 		int rpta = uR.buscarUsername(user.getUsername());

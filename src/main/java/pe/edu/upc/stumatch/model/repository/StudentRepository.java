@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import pe.edu.upc.stumatch.model.entity.Student;
 
 @Repository
-public interface StudentRepository  extends JpaRepository<Student, Integer>{
+public interface StudentRepository  extends JpaRepository<Student, String>{
 	List<Student> findByLastNameAndFirstName(String lastName, String firstName) throws Exception;
 
 }
