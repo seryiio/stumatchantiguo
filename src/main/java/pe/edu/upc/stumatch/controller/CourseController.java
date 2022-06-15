@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.stumatch.business.crud.CareerService;
 import pe.edu.upc.stumatch.business.crud.CourseService;
@@ -23,6 +24,7 @@ import pe.edu.upc.stumatch.model.entity.Teacher;
 
 @Controller
 @RequestMapping("/courses")
+@SessionAttributes("{course}")
 public class CourseController {
 	@Autowired
 	private CourseService courseService;
@@ -64,7 +66,7 @@ public class CourseController {
 	}
 	
 	@PostMapping("savenew")
-	public String saveCourse(Model model, @ModelAttribute("deliveryman") Course course) {
+	public String saveCourse(Model model, @ModelAttribute("career") Course course) {
 		try {
 			Course courseSaved = courseService.create(course);
 		} catch (Exception e) {

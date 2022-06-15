@@ -3,7 +3,7 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
 <meta charset="UTF-8">
-<title>eBusiness - Login</title>
+<title>StuMatch</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
@@ -17,10 +17,8 @@
 				<form th:action="@{/login}" method="post">
 
 					<div class="col-sm-6">
-						<img th:src="@{/img/logoeb.png}" height="35%" width="35%" />
+						<img th:src="@{/img/Logo.png}" height="35%" width="35%" class="mb-5"/>
 					</div>
-					<div class="col-sm-6"><p  class="btn btn-lg btn-danger btn-block">e-Business</p></div>
-
 					<div class="col-sm-6">
 						<input type="text" name="username" id="username"
 							class="form-control" placeholder="usuario" autofocus required />

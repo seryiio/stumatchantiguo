@@ -14,38 +14,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.stumatch.business.crud.CareerService;
-import pe.edu.upc.stumatch.business.crud.TeacherService;
+import pe.edu.upc.stumatch.business.crud.IUserService;
+import pe.edu.upc.stumatch.business.crud.StudentService;
 import pe.edu.upc.stumatch.model.entity.Career;
-import pe.edu.upc.stumatch.model.entity.Teacher;
+import pe.edu.upc.stumatch.model.entity.Student;
+import pe.edu.upc.stumatch.model.entity.Users;
 
 @Controller
-@RequestMapping("/teachers")
-@SessionAttributes("{teacher}")
-public class TeacherController {
+@RequestMapping("/students")
+@SessionAttributes("{student}")
+public class StudentController {
+	@Autowired
+	private StudentService studentService;
 	
 	@Autowired
-	private TeacherService teacherService;
+	private IUserService userService;
 	
 	@Autowired
 	private CareerService careerService;
 	
 	@GetMapping
-	public String listTeacher(Model model) {
+	public String listStudent(Model model) {
 		
 		try {
-			List<Teacher> teachers = teacherService.getAll();
-			model.addAttribute("teachers", teachers);
+			List<Student> students = studentService.getAll();
+			model.addAttribute("students", students);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "teachers/list-teachers";
+		return "students/list-students";
 	}
 	
 	@GetMapping("new")
-	public String newTeacher(Model model) {
-		Teacher teacher = new Teacher();
-		model.addAttribute("teacher", teacher);
+	public String newStudent(Model model) {
+		Student student = new Student();
+		model.addAttribute("student", student);
+		Users user = new Users();
+		model.addAttribute("user", user);
 		try {
 			List<Career> careers = careerService.getAll();
 			model.addAttribute("careers", careers);
@@ -53,68 +59,69 @@ public class TeacherController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "teachers/new-teacher";
+		return "students/new-student";
 	}
 	
 	@PostMapping("savenew")
-	public String saveTeacher(Model model, @ModelAttribute("teacher") Teacher teacher) {
+	public String saveStudent(Model model, @ModelAttribute("student") Student student, @ModelAttribute("user") Users user) {
 		try {
-			Teacher teacherSaved = teacherService.create(teacher);
+			Student studentSaved = studentService.create(student);
+			Users userSaved = userService.create(user);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/teachers";
+		return "redirect:/students";
 	}
 	
 	@GetMapping("{id}/edit")
-	public String editTeacher(Model model, @PathVariable("id") String id) {
+	public String editStudent(Model model, @PathVariable("id") String id) {
 		
 		try {
-			if(teacherService.existById(id)) {
-				Optional<Teacher> optional = teacherService.findById(id);
-				model.addAttribute("teacher", optional.get());
+			if(studentService.existById(id)) {
+				Optional<Student> optional = studentService.findById(id);
+				model.addAttribute("student", optional.get());
 				List<Career> careers = careerService.getAll();
 				model.addAttribute("careers", careers);
 			} else {
-				return "redirect:/teachers";
+				return "redirect:/students";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "teachers/edit-teacher";
+		return "students/edit-student";
 	}
 	
 	@PostMapping("{id}/update")
-	public String updateTeacher(Model model, @ModelAttribute("teacher") Teacher teacher, @PathVariable("id") String id) {
+	public String updateStudent(Model model, @ModelAttribute("student") Student student, @PathVariable("id") String id) {
 		try {
-			if(teacherService.existById(id)) {
-				teacherService.update(teacher);
+			if(studentService.existById(id)) {
+				studentService.update(student);
 			} else {
-				return "redirect:/teachers";
+				return "redirect:/students";
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/teachers";
+		return "redirect:/students";
 	}
 	
 	@GetMapping("{id}/delete")
-	public String deleteTeacher(Model model, @PathVariable("id") String id) {
+	public String deleteStudent(Model model, @PathVariable("id") String id) {
 		try {
-			if(teacherService.existById(id)) {
-				teacherService.deleteById(id);
+			if(studentService.existById(id)) {
+				studentService.deleteById(id);
 			} else {
-				return "redirect:/teachers";
+				return "redirect:/students";
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/teachers";
+		return "redirect:/students";
 	}
 	
 }

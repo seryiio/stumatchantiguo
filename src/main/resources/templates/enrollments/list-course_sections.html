@@ -36,7 +36,7 @@
 											name="flexRadioDefault" id="flexRadioDefault1"></td>
 										<th scope="row" th:text="${section.id}"></th>
 										<td th:text="${section.course.name}"></td>
-										<td th:text="${section.teacher.lastName}"></td>
+										<td th:text="${section.teacher.lastName + ', ' + section.teacher.firstName }"></td>
 										<td th:text="${section.day}"></td>
 										<td th:text="${section.startTime}"></td>
 										<td th:text="${section.endTime}"></td>

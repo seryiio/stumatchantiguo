@@ -17,7 +17,7 @@ public class StudentServiceImpl implements StudentService{
 	private StudentRepository studentRepository;
 	
 	@Override
-	public JpaRepository<Student, Integer> getJpaRepository() {
+	public JpaRepository<Student, String> getJpaRepository() {
 		return this.studentRepository;
 	}
 

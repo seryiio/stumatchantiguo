@@ -17,8 +17,8 @@ import pe.edu.upc.stumatch.business.crud.IRoleService;
 import pe.edu.upc.stumatch.business.crud.IUserService;
 
 @Controller
-@SessionAttributes
 @RequestMapping("/roles")
+@SessionAttributes
 public class RoleController {
 
 	@Autowired
