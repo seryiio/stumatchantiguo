@@ -51,7 +51,7 @@ public class UserController {
 		}
 		model.addAttribute("listaUsuarios", uService.list());
 
-		return "usersecurity/listUser";
+		return "redirect:/students/new";
 	}
 
 	@GetMapping("/list")

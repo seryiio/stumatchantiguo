@@ -7,7 +7,7 @@
 <body>
 	<header th:replace="/layout/layout :: frag-header"></header>
 		<main>
-	
+	<span sec:authentication="name"></span>
 	<section class ="section">
 		<nav class="mt-3 mx-3" aria-label="breadcrumb">
 		  <ol class="breadcrumb">
@@ -59,7 +59,7 @@
 						    
 		  </div>
 		  <div class="card-footer text-muted">
-		   <a class="btn btn-danger" th:href="@{/students/new}" role="button"><i class="fa-solid fa-plus"></i> Agregar nuevo Estudiante</a>
+		   <a class="btn btn-danger" th:href="@{/users/new}" role="button"><i class="fa-solid fa-plus"></i> Agregar nuevo Estudiante</a>
 		  </div>
 		</div>
 	</section>

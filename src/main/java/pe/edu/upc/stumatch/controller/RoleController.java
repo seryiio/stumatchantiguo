@@ -46,7 +46,7 @@ public class RoleController {
 		}
 		model.addAttribute("listaRoles", rService.list());
 
-		return "role/role";
+		return "redirect:/students";
 
 	}
 

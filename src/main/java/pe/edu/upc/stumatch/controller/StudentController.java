@@ -50,11 +50,16 @@ public class StudentController {
 	public String newStudent(Model model) {
 		Student student = new Student();
 		model.addAttribute("student", student);
+		//---
 		Users user = new Users();
 		model.addAttribute("user", user);
+		//--
+		
 		try {
 			List<Career> careers = careerService.getAll();
 			model.addAttribute("careers", careers);
+			List<Users> users = userService.getAll();
+			model.addAttribute("users", users);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,15 +68,14 @@ public class StudentController {
 	}
 	
 	@PostMapping("savenew")
-	public String saveStudent(Model model, @ModelAttribute("student") Student student, @ModelAttribute("user") Users user) {
+	public String saveStudent(Model model, @ModelAttribute("student") Student student) { 
 		try {
 			Student studentSaved = studentService.create(student);
-			Users userSaved = userService.create(user);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/students";
+		return "redirect:/roles/new";
 	}
 	
 	@GetMapping("{id}/edit")
